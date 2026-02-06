@@ -5,32 +5,128 @@
             <title>
                 <h1>Projects of Resume</h1>
             </title>
-            <link rel="stylesheet" type="text/css" href="labs/lab1/styles.css">
+            <link rel="stylesheet" type="text/css" href="styles.css">
         </head>
         <body>
             <header>
                 <h1>Sarah's resume</h1>
                 <p>Online website showcasing Sarah's objectives and goals</p>
             </header>
-            <nav>
-                <ul>
-                    <li> <a href="index.html">Home</a></li>
-                    <li> <a href="education.html">Education</a></li>
-                    <li> <a href="awards.html">Awards and Honors</a></li>
-                    <li> <a href="projects.html">Projects</a></li>
-                    <li> <a href="experience.html">Experience</a></li>
-                    <li> <a href="certifications.html">Certifications</a></li>
-                </ul>
-            </nav>
-            <main>
-                <ul>
-                    <li>Spark!Bytes Fullstack Project</li>
-                    <li>BU Bus Equity Project</li>
-                </ul>
+            <div id="nav-main">
+
+                <nav>
+                    <ul>
+                        <li> <a href="index.html">Home</a></li>
+                        <li> <a href="education.html">Education</a></li>
+                        <li> <a href="references.html">References</a></li>
+                        <li> <a href="projects.html">Projects</a></li>
+                        <li> <a href="experience.html">Experience</a></li>
+                        <li> <a href="awards-skills.html">Awards and Skills</a></li>
+                    </ul>
+                </nav>
+                <main>
+                <section>
+                    <h3>Spark!Bytes Fullstack Project</h3>
+                    <p>Developed a responsive web application using React, Node.js, and MongoDB for a startup accelerator program. Implemented features like user authentication and project dashboards.</p>
+                </section>
+        
+                <section>
+                    <h3>BU Bus Equity Project</h3>
+                    <p>Collaborated with a team of students to analyze public transportation data in Boston, identifying service inequities in bus routes using Python and data visualization tools.</p>
+                </section>
+        
+                <section>
+                    <h3>Personal Portfolio Website</h3>
+                    <p>Designed and deployed a personal portfolio using HTML, CSS, and GitHub Pages to highlight skills, projects, and resume. Focused on responsive design and accessibility.</p>
+                </section>
+
+                <section id="calculator-section">
+                    <h3>Javascript Calculator Project</h3>
+                    <div class="calc-wrapper">
+                        <div class="calc-inputs">
+                            <input type="text" id="first" placeholder="First Number">
+                            <input type="text" id="second" placeholder="Second Number">
+                        </div>
+
+                        <div class="calc-buttons">
+                            <button onclick="add()">+</button>
+                            <button onclick="subtract()">−</button>
+                            <button onclick="multiply()">×</button>
+                            <button onclick="divide()">÷</button>
+                            <button onclick="power()">^</button>
+                            <button onclick="clear()">Clear</button>
+                        </div>
+
+                        <div id="calc-result">
+                            <h4>Result:</h4>
+                            <p id="output">—</p>
+                        </div>
+                    </div>
+                </section>
+
+                
             </main>
+
+            </div>
+
+
+            <script>
+                function getValues() {
+                    const num1 = parseFloat(document.getElementById("first").value);
+                    const num2 = parseFloat(document.getElementById("second").value);
+                    return [num1, num2];
+                }
+            
+                function displayResult(result) {
+                    const output = document.getElementById("output");
+                    output.innerHTML = result;
+                    output.style.color = (result < 0) ? "red" : "black";
+                }
+            
+                function add() {
+                    const [a, b] = getValues();
+                    displayResult(a + b);
+                }
+            
+                function subtract() {
+                    const [a, b] = getValues();
+                    displayResult(a - b);
+                }
+            
+                function multiply() {
+                    const [a, b] = getValues();
+                    displayResult(a * b);
+                }
+            
+                function divide() {
+                    const [a, b] = getValues();
+                    if (b === 0) {
+                        displayResult("Cannot divide by zero");
+                    } else {
+                        displayResult(a / b);
+                    }
+                }
+            
+                function power() {
+                    const [a, b] = getValues();
+                    let result = 1;
+                    for (let i = 0; i < b; i++) {
+                        result *= a;
+                    }
+                    displayResult(result);
+                }
+            
+                function clear() {
+                    document.getElementById("first").value = "";
+                    document.getElementById("second").value = "";
+                    document.getElementById("output").innerHTML = "";
+                }
+            </script>
+            
             <footer>
-                <p>All Rights Reserved</p>
+                <p>All Rights Reserved by Sarah Yuhan <a href="#">Credits</a> &copy;</p>
             </footer>
+            
         </body>
     </html>
 </DOCTYPE>
